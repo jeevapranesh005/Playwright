@@ -4,12 +4,7 @@ import { chromium, defineConfig, devices } from '@playwright/test';
  * https://github.com/motdotla/dotenv
  */
 import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 
 const envName=process.env.ENV 
 dotenv.config({
@@ -34,6 +29,7 @@ export default defineConfig({
     headless: true,
     screenshot: 'only-on-failure',
     video:'retain-on-failure',
+    browserName:"chromium"
 },
 
   /* Configure projects for major browsers */
