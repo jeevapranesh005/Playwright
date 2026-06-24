@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
     "test:qa": "cross-env ENV=qa playwright test tests/example.spec.ts",
     "test:prod": "cross-env ENV=prod playwright test tests/tutorialNinja.spec.ts"
-  }
-,
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,6 +14,7 @@
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.0.0",
+    "allure-playwright": "^3.10.1",
     "cross-env": "^10.1.0"
   },
   "dependencies": {
