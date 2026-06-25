@@ -6,7 +6,6 @@ test.beforeEach(async({page})=>{
 
 
 test('login',async({page})=>{
-
    
     await page.click("//span[text()='My Account']")
     await page.click("//ul//a[text()='Login']")

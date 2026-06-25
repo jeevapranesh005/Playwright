@@ -1,0 +1,2 @@
+the subscribe text is locator('#success-subscribe')
+test completed

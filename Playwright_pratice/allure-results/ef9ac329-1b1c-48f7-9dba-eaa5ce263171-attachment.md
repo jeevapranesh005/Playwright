@@ -1,0 +1,139 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: contact.spec.ts >> contact us
+- Location: tests\automation\contact.spec.ts:5:5
+
+# Error details
+
+```
+Error: expect(locator).toContainText(expected) failed
+
+Locator: locator('//div[@class=\'status alert alert-success\']')
+Expected substring: "Success"
+Received string:    ""
+Timeout: 5000ms
+
+Call log:
+  - Expect "toContainText" with timeout 5000ms
+  - waiting for locator('//div[@class=\'status alert alert-success\']')
+    14 × locator resolved to <div class="status alert alert-success"></div>
+       - unexpected value ""
+
+```
+
+```yaml
+- banner:
+  - link "Website for automation practice":
+    - /url: /
+    - img "Website for automation practice"
+  - list:
+    - listitem:
+      - link " Home":
+        - /url: /
+    - listitem:
+      - link " Products":
+        - /url: /products
+    - listitem:
+      - link " Cart":
+        - /url: /view_cart
+    - listitem:
+      - link " Signup / Login":
+        - /url: /login
+    - listitem:
+      - link " Test Cases":
+        - /url: /test_cases
+    - listitem:
+      - link " API Testing":
+        - /url: /api_list
+    - listitem:
+      - link " Video Tutorials":
+        - /url: https://www.youtube.com/c/AutomationExercise
+    - listitem:
+      - link " Contact us":
+        - /url: /contact_us
+- heading "Contact Us" [level=2]:
+  - text: Contact
+  - strong: Us
+- text: "Note: Below contact form is for testing purpose."
+- link "QA engineer bootcamp":
+  - img
+  - text: QA engineer bootcamp
+- heading "Get In Touch" [level=2]
+- textbox "Name"
+- textbox "Email"
+- textbox "Subject"
+- textbox "Your Message Here"
+- button "Choose File"
+- button "Submit"
+- heading "Feedback For Us" [level=2]
+- paragraph: We really appreciate your response to our website.
+- paragraph:
+  - text: Kindly share your feedback with us at
+  - link "feedback@automationexercise.com":
+    - /url: mailto:feedback@automationexercise.com
+  - text: .
+- paragraph: If you have any suggestion areas or improvements, do let us know. We will definitely work on it.
+- paragraph: Thank you
+- insertion:
+  - heading "These are topics related to the article that might interest you" [level=2]: Discover more
+  - link "Programming"
+  - link "Software"
+  - link "Development Tools"
+- contentinfo:
+  - heading "Subscription" [level=2]
+  - textbox "Your email address"
+  - button ""
+  - paragraph: Get the most recent updates from our site and be updated your self...
+  - paragraph: Copyright © 2021 All rights reserved
+```
+
+# Test source
+
+```ts
+  1  | 
+  2  | import{test,expect, chromium} from '@playwright/test'
+  3  | import path from 'node:path'
+  4  | 
+  5  | test('contact us',async ()=>{
+  6  |     const Browser = await chromium.launch({
+  7  |         headless:false
+  8  |     })
+  9  | 
+  10 |     const context = await Browser.newContext()
+  11 |     const page = await context.newPage()
+  12 | 
+  13 |     await page.goto('https://automationexercise.com/')
+  14 |     await page.locator('//a[@href="/contact_us"]').click()
+  15 |     await page.getByPlaceholder('Name').fill('john')
+  16 |     await page.locator('//input[@data-qa="email"]').fill('john22@gmail.com')
+  17 |     await page.getByPlaceholder('Subject').fill('about the job')
+  18 | 
+  19 |     await page.locator("#message").fill('jhgfxckj jhgfckj hjch jhgfch')
+  20 | 
+  21 |     await page.locator("//input[@name='upload_file']").setInputFiles('D:/D-Downloads/moto.jpg')
+  22 |     
+  23 |     let submit = page.locator("//input[@name='submit']");
+  24 |     await submit.scrollIntoViewIfNeeded();
+  25 | 
+  26 |     page.on('dialog', async dialog => {
+  27 |         console.log(dialog.message());
+  28 |         await dialog.accept();
+  29 |     });
+  30 | 
+  31 | 
+  32 |     await submit.click();
+  33 | 
+  34 |     
+  35 | 
+  36 |     await expect(await page.locator("//div[@class='status alert alert-success']"))
+> 37 |     .toContainText("Success");
+     |      ^ Error: expect(locator).toContainText(expected) failed
+  38 | 
+  39 | })
+```

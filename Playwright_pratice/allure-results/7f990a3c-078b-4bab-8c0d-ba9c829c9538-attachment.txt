@@ -1,0 +1,3 @@
+the subscribe text is 
+							You have been successfully subscribed!
+						
