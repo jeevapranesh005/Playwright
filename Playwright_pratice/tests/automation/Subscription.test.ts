@@ -9,6 +9,7 @@ test('subscribe' , async()=>{
     const page = await context.newPage()
 
     await page.goto("https://automationexercise.com/")
+    await page.reload()
 
     let sub = page.getByText('Subscription');
     await sub.scrollIntoViewIfNeeded();

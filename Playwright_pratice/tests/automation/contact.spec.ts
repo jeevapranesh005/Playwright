@@ -11,6 +11,12 @@ test('contact us',async ()=>{
     const page = await context.newPage()
 
     await page.goto('https://automationexercise.com/')
+    let title= await page.title()
+    let url = await page.url();
+    let source = await page.content()
+     console.log("title ",title)
+    console.log("title ",url)
+    console.log("source :",source.substring(0,200))
     await page.locator('//a[@href="/contact_us"]').click()
     await page.getByPlaceholder('Name').fill('john')
     await page.locator('//input[@data-qa="email"]').fill('john22@gmail.com')

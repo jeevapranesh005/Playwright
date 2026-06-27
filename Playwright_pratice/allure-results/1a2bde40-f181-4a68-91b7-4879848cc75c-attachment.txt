@@ -1,0 +1,5 @@
+I am an alert box!
+Press a button!
+Press a button!
+Promise { <pending> }
+alert handled

@@ -1,0 +1,5 @@
+Promise { <pending> }
+about:blank
+value1  Promise { '2' }
+value2  locator('#sum2')
+
