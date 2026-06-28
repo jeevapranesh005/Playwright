@@ -1,5 +1,5 @@
 import { chromium,test} from "@playwright/test";
-import path from "node:path";
+
 
 test("navigae commends", async()=>{
     const broswer = await chromium.launch({
