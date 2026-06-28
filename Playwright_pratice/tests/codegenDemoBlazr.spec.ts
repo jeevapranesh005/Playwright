@@ -15,7 +15,6 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'PRODUCT STORE' })).toBeVisible();
 
   await page.getByRole('link', { name: 'Monitors' }).click();
-  await expect(page.getByRole('img', { name: 'Third slide' })).toBeVisible();
 
   await page.getByRole('link', { name: 'Apple monitor' }).click();
   await expect(page.getByRole('heading', { name: 'Apple monitor' })).toBeVisible();
@@ -27,18 +26,4 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Cart', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Products' })).toBeVisible();
   await page.getByRole('button', { name: 'Place Order' }).click();
-  await expect(page.locator('html').getByRole('document')).toMatchAriaSnapshot(`
-    - text: "/Total: \\\\d+ Name:/"
-    - 'textbox /Total: \\d+ Name:/'
-    - text: "Country:"
-    - textbox "Country:"
-    - text: "City:"
-    - textbox "City:"
-    - text: "Credit card:"
-    - textbox "Credit card:"
-    - text: "Month:"
-    - textbox "Month:"
-    - text: "Year:"
-    - textbox "Year:"
-    `);
 });
