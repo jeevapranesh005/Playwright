@@ -1,6 +1,7 @@
 import { chromium,test} from "@playwright/test";
 
 
+test.setTimeout(60000);
 test("navigae commends", async()=>{
     const broswer = await chromium.launch({
         headless:false

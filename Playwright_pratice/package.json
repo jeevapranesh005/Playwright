@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test:qa": "cross-env ENV=qa playwright test tests/example.spec.ts",
-    "test:prod": "cross-env ENV=prod playwright test tests/tutorialNinja.spec.ts"
+    "test:prod": "cross-env ENV=prod playwright test tests/tutorialNinja.spec.ts",
+    "test":"npx playwright test",
+    "test:lastrun":"npx playwright test --last-failed"
   },
   "keywords": [],
   "author": "",

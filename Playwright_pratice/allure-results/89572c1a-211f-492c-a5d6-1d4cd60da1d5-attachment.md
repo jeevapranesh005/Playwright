@@ -1,0 +1,88 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: skip.test.ts >> Test-1
+- Location: tests\skip.test.ts:3:5
+
+# Error details
+
+```
+Error: expect(locator).toHaveText(expected) failed
+
+Locator:  locator('#logout2')
+Expected: "Log ut"
+Received: "Log out"
+Timeout:  5000ms
+
+Call log:
+  - Expect "soft toHaveText" with timeout 5000ms
+  - waiting for locator('#logout2')
+    5 × locator resolved to <a href="#" id="logout2" class="nav-link" onclick="logOut()">Log out</a>
+      - unexpected value "Log out"
+    - waiting for" https://www.demoblaze.com/" navigation to finish...
+    - navigated to "https://www.demoblaze.com/"
+    8 × locator resolved to <a href="#" id="logout2" class="nav-link" onclick="logOut()">Log out</a>
+      - unexpected value "Log out"
+
+```
+
+```yaml
+- link "Log out":
+  - /url: "#"
+```
+
+# Test source
+
+```ts
+  1  | import {test,expect} from '@playwright/test'
+  2  | 
+  3  | test("Test-1",async({page})=>{
+  4  | 
+  5  |     await page.goto("https://www.demoblaze.com/")
+  6  |     await page.locator("#login2").click()
+  7  |     await page.locator("#loginusername").fill("jeevs")
+  8  |     await page.locator("#loginpassword").fill('1234567890')
+  9  |     await page.locator("//button[@onclick='logIn()']").click()
+  10 | 
+  11 |     let logout = page.locator("#logout2")
+> 12 |     await expect.soft(logout).toHaveText("Log ut")
+     |                               ^ Error: expect(locator).toHaveText(expected) failed
+  13 |     await expect(logout).toBeVisible()
+  14 |     
+  15 | })
+  16 | 
+  17 | 
+  18 | test.skip("Test-2 ",async({page})=>{
+  19 | 
+  20 |     await page.goto("https://www.demoblaze.com/")
+  21 |     await page.locator("#login2").click()
+  22 |     await page.locator("#loginusername").fill("jeevs")
+  23 |     await page.locator("#loginpassword").fill('1234567890')
+  24 |     await page.locator("//button[@onclick='logIn()']").click()
+  25 | 
+  26 |     let logout = page.locator("#logout2")
+  27 |     await expect.soft(logout).toHaveText("Log ut")
+  28 |     await expect(logout).toBeVisible()
+  29 |     
+  30 | })
+  31 | 
+  32 | 
+  33 | test("Test-3",async({page})=>{
+  34 | 
+  35 |     await page.goto("https://www.demoblaze.com/")
+  36 |     await page.locator("#login2").click()
+  37 |     await page.locator("#loginusername").fill("jeevs")
+  38 |     await page.locator("#loginpassword").fill('1234567890')
+  39 |     await page.locator("//button[@onclick='logIn()']").click()
+  40 | 
+  41 |     let logout = page.locator("#logout2")
+  42 |     await expect.soft(logout).toHaveText("Log ut")
+  43 |     await expect(logout).toBeVisible()
+  44 |     
+  45 | })
+```

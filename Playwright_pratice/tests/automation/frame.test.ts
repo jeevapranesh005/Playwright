@@ -11,11 +11,11 @@ test("Frame", async ({ page }) => {
 
   const firstFrame = page.frameLocator("iframe#firstFr");
 
-  await firstFrame.locator("input[name='fname']").fill("Prasanna");
-  await firstFrame.locator("input[name='lname']").fill("K");
+  await firstFrame.locator("input[name='fname']").fill("jeeva");
+  await firstFrame.locator("input[name='lname']").fill("p");
 
   await expect(firstFrame.locator("p.text-sm.font-semibold.text-center"))
-    .toContainText("Prasanna K");
+    .toContainText("jeeva p");
 });
 
 test("Frame2 - Inner Frame", async ({ page }) => {
