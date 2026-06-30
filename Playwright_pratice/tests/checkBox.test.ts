@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-import { afterEach } from 'node:test';
+
 
 test("Radio button test",async({page})=>{
     await page.goto("https://demoqa.com/radio-button");
@@ -8,7 +8,7 @@ test("Radio button test",async({page})=>{
     console.log(await page.locator("//input[@id='impressiveRadio']").isEnabled())
     await page.locator("//input[@id='impressiveRadio']").check();
     console.log(await page.locator("//input[@id='impressiveRadio']").isChecked())
-    await expect(page.locator("//span[@class='text-success']")).toHaveText("Impressive");
+    await expect(page.locator("//span[@class='text-success']")).toHaveText("Impressive",{timeout:40000});
     
 })
 test("Check box test",async({page})=>{

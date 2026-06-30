@@ -16,11 +16,12 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
  // repeatEach:3,
+ 
+  globalTimeout:60000,
+  timeout:60000,
 
-  // timeout:60000,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
+
   //retries: process.env.CI ? 2 : 2,
   //retries:2,
   
@@ -36,7 +37,9 @@ export default defineConfig({
     headless: false,
     screenshot: 'only-on-failure',
     video:'retain-on-failure',
-    browserName:"chromium"
+    browserName:"chromium",
+    //actionTimeout:20000,
+
 },
 
   /* Configure projects for major browsers */
