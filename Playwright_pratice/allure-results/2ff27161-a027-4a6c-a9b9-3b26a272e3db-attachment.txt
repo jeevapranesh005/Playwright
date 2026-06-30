@@ -1,0 +1,6 @@
+{
+  testName: 'invalid password',
+  uname: 'jeevs',
+  password: 'jhgfdfh',
+  expectedresult: 'failure'
+}

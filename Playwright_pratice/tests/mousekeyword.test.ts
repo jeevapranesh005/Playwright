@@ -15,7 +15,7 @@ test("keyboard action", async ({ page }) => {
     await page.goto("https://demoqa.com/text-box");
 
     await page.locator("#userName").click();
-    await page.keyboard.type("Tamil");
+    await page.keyboard.type("jeeva");
     await page.keyboard.press("Tab");
     await page.keyboard.type("JEEVA@gmail.com");
 

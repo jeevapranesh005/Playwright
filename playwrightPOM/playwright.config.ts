@@ -1,8 +1,14 @@
-import { chromium, defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
+
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
+// import dotenv from 'dotenv';
+// import path from 'path';
+// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
 import dotenv from 'dotenv';
 
 
@@ -11,36 +17,28 @@ dotenv.config({
   path: `./env/.env.${envName}`
 });
 
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
- // repeatEach:3,
-
-  //globalTimeout:60*1000,
-  timeout:60000,
-
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-
-  //retries: process.env.CI ? 2 : 2,
-  //retries:2,
-  
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html',{open:'always'}],['allure-playwright']],
+  reporter: [['html',{open:'always'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  //testMatch:['tests/demoBlaze.test.ts'],
-
- use: {
-    trace: 'on',
-    headless: true,
-    screenshot: 'only-on-failure',
-    video:'retain-on-failure',
-    browserName:"chromium",
-    //actionTimeout:20000,
-
-},
+  use: {
+    browserName:'chromium',
+    trace: 'on-first-retry',
+    video:"retain-on-failure",
+    screenshot:"on-first-failure"
+  },
 
   /* Configure projects for major browsers */
   projects: [

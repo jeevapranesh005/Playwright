@@ -1,0 +1,20 @@
+[
+    {
+        "testName":"valid login",
+        "uname":"jeevs",
+        "password":"1234567890",
+        "expectedresult":"succes"
+    },
+    {
+        "testName":"invalid username",
+        "uname":"jee",
+        "password":"jhgfdfh",
+        "expectedresult":"failure"
+    },
+    {
+        "testName":"invalid password",
+        "uname":"jeevs",
+        "password":"jhgfdfh",
+        "expectedresult":"failure"
+    }
+]
