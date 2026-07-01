@@ -25,9 +25,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI
-    ? [['html', { outputFolder: 'playwright-report', open: 'never' }], ['junit', { outputFile: 'test-results/junit.xml' }]]
-    : [['html', { open: 'always' }]],
+  reporter: [['html',{open:'always'}],['allure-playwright']],
   timeout: 60000,
 
   expect:{

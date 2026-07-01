@@ -1,11 +1,11 @@
 {
   "name": "demoblazepom",
   "version": "1.0.0",
-   "description": "",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test:qa": "cross-env ENV=qa playwright test",
-    "test":"npx playwright test"
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,8 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.0.1"
+    "@types/node": "^26.0.1",
+    "allure": "^3.14.0"
   },
   "dependencies": {
     "cross-env": "^10.1.0",
