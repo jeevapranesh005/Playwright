@@ -59,8 +59,6 @@ test("iterate window",async({page,context})=>{
 })
 
 
-test("inerate window attribute",async({page,conte}))
-
 test.afterEach(async({page}) =>{
     console.log("Test is completed")
 })
