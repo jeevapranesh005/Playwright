@@ -1,0 +1,4 @@
+First window URL:  [Function: url]
+New Window URL:  https://demoqa.com/sample
+Heading:  This is a sample page
+Test is completed

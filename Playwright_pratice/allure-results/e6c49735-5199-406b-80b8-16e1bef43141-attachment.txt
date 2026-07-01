@@ -1,0 +1,11 @@
+number pf pages:  3
+-----------------------
+url:  https://demoqa.com/browser-windows
+Title  demosite
+-----------------------
+url:  https://demoqa.com/sample
+Title  
+-----------------------
+url:  https://demoqa.com/sample
+Title  
+Test is completed
