@@ -1,11 +1,10 @@
 {
-  "name": "demoblazepom",
+  "name": "automationexersicepom",
   "version": "1.0.0",
-   "description": "",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test:qa": "cross-env ENV=qa playwright test",
-    "test":"npx playwright test"
+    "test:qa": "cross-env ENV=qa playwright test"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +16,7 @@
   },
   "dependencies": {
     "cross-env": "^10.1.0",
-    "dotenv": "^17.4.2",
-    "xlsx": "^0.18.5"
+    "csv-parse": "^7.0.0",
+    "dotenv": "^17.4.2"
   }
 }

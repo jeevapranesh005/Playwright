@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/baseFixture';
-import { readlogindata, loginuser } from '../utilites/csvReader';
+import { readcsv, loginuser } from '../utilites/csvReader';
 
-const users: loginuser[] = readlogindata();
+const users: loginuser[] = readcsv();
 
 console.log("CSV Data:", users);
 

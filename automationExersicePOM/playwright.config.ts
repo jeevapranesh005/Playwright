@@ -4,13 +4,16 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
+
 import dotenv from 'dotenv';
 
 
-const envName=process.env.ENV ||'qa'
+const envName=process.env.ENV 
 dotenv.config({
   path: `./env/.env.${envName}`
 });
+
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -25,23 +28,19 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI
-    ? [['html', { outputFolder: 'playwright-report', open: 'never' }], ['junit', { outputFile: 'test-results/junit.xml' }]]
-    : [['html', { open: 'always' }]],
-  timeout: 60000,
-
-  expect:{
-    timeout:5000
-  },
-  
+  reporter: [['html',{open:'always'}]],
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: !!process.env.CI,
-    trace: 'on',
+    browserName: process.env.browser as 'chromium' | 'firefox' | 'webkit',
     screenshot:'only-on-failure',
     video:'retain-on-failure',
     actionTimeout:5000,
-
+    trace: 'on-first-retry',
   },
+  expect:{
+    timeout:4000
+  },
+  timeout:60000,
 
   /* Configure projects for major browsers */
   projects: [
@@ -50,10 +49,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    //  {
+    //    name: 'firefox',
+    //    use: { ...devices['Desktop Firefox'] },
+    //  },
 
     // {
     //   name: 'webkit',

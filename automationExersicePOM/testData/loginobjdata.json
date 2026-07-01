@@ -1,0 +1,14 @@
+[
+    {
+        "title":"valid",
+        "expect":"pass",
+        "user":"error@gmail.com",
+        "password":"1234567890"
+    },
+    {
+        "title":"invalid",
+        "expect":"fail",
+        "user":"ff@gmail.com",
+        "password":"jhgcfghjk"
+    }
+]

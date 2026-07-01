@@ -1,6 +1,7 @@
 import{test,expect} from '../fixtures/basefixture'
 import loginData from '../testData/loginData.json'
 
+
 test.describe('login module',()=>{
 
     test.beforeEach(async({loginpage})=>{

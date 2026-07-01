@@ -1,0 +1,3 @@
+type,username,password
+valid,error@gmail.com,1234567890
+invalid,sdfgh@gmail.com,0987fg

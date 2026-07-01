@@ -26,6 +26,7 @@ export class loginpage{
 
     async navigate(){
         await this.page.goto(process.env.base_url!)
+        
     }
 
     async loginpage(){
