@@ -6,7 +6,8 @@
   "scripts": {
     "test:qa": "cross-env ENV=qa playwright test tests/example.spec.ts",
     "test:prod": "cross-env ENV=prod playwright test tests/tutorialNinja.spec.ts",
-    "test":"npx playwright test"  },
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,10 +17,11 @@
     "@types/node": "^26.0.0",
     "allure-playwright": "^3.10.1",
     "cross-env": "^10.1.0",
-    "typescript":"^5.8.3",
-    "ts-node":"^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.5.0",
     "dotenv": "^17.4.2"
   }
 }
